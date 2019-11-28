@@ -1,0 +1,3 @@
+[submodule "i3cmd/panel"]
+	path = i3cmd/panel
+	url = https://github.com/RoboCopGay/dmenu.git
