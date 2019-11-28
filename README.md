@@ -15,5 +15,3 @@ is in progress...
 ## Powered by
 
 - [xdotool](https://github.com/jordansissel/xdotool)
-- [xkill](https://github.com/freedesktop/xorg-xkill)
-- [i3ci](https://github.com/syl20bnr/i3ci)
