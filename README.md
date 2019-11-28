@@ -14,4 +14,5 @@ is in progress...
 
 ## Powered by
 
-- [xdotool](https://github.com/jordansissel/xdotool)
+- [xdotool](http://github.com/jordansissel/xdotool)
+- [dmenu](http://tools.suckless.org/dmenu)
