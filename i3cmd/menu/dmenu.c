@@ -518,29 +518,33 @@ paste(void)
     drawmenu();
 }
 
-    static void
+    static int
 readstdin(void)
 {
-    char buf[sizeof text], *p;
+    char buf[sizeof text], *p, **lines = NULL;
     size_t i, imax = 0, size = 0;
-    unsigned int tmpmax = 0;
+    unsigned int tmpmax = 0, l;
 
     /* read each line from stdin and add it to the item list */
     for (i = 0; fgets(buf, sizeof buf, stdin); i++) {
-        if (i + 1 >= size / sizeof *items)
-            if (!(items = realloc(items, (size += BUFSIZ))))
-                die("cannot realloc %u bytes:", size);
         if ((p = strchr(buf, '\n')))
             *p = '\0';
-        if (!(items[i].text = strdup(buf)))
-            die("cannot strdup %u bytes:", strlen(buf) + 1);
+        lines = realloc(lines, (size += BUFSIZ));
+        lines[i] = strdup(buf);
+        l = i;
+    }
+
+    items = malloc(size);
+    for (i = 0; i<l; i++) {
         items[i].out = 0;
         drw_font_getexts(drw->fonts, buf, strlen(buf), &tmpmax, NULL);
         if (tmpmax > inputw) {
             inputw = tmpmax;
             imax = i;
         }
+        items[i].text = lines[i];
     }
+
     if (items)
         items[i].text = NULL;
     inputw = items ? TEXTW(items[imax].text) : 0;
