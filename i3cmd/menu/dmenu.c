@@ -28,11 +28,18 @@
 /* enums */
 enum { SchemeNorm, SchemeSel, SchemeOut, SchemeLast }; /* color schemes */
 
+typedef struct _Context {
+    char * text, * output;
+    struct _Context * submenu;
+    int indice;
+} ContextMenu;
+
 struct item {
     char *text;
     struct item *left, *right;
     int out;
 };
+
 
 static char text[BUFSIZ] = "";
 static char *embed;
@@ -521,6 +528,10 @@ paste(void)
     static int
 readstdin(void)
 {
+
+    ContextMenu * context;
+    char * out, * text, indice;
+
     char buf[sizeof text], *p, **lines = NULL;
     size_t i, imax = 0, size = 0;
     unsigned int tmpmax = 0, l;
@@ -529,10 +540,22 @@ readstdin(void)
     for (i = 0; fgets(buf, sizeof buf, stdin); i++) {
         if ((p = strchr(buf, '\n')))
             *p = '\0';
+        if ((p = strchr(buf, ':'))){
+            *p = '\0';
+            out = p+1;
+            if ((p = strchr(out, '\n')))
+                *p = '\0';
+        } else {
+            out = buf;
+        }
+
+        printf("%s\n", out);
         lines = realloc(lines, (size += BUFSIZ));
         lines[i] = strdup(buf);
         l = i;
     }
+
+
 
     items = malloc(size);
     for (i = 0; i<l; i++) {
