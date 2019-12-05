@@ -1,8 +1,13 @@
-struct item {
-    char *text;
-    struct item *left, *right;
-    int out;
-};
+typedef struct __item {
+    char * value, * output;
+} Item;
 
+typedef union __menu {
+    Item * items;
+    union __menu * submenu;
+} _menu;
 
-static void appenditem(struct item *item, struct item **list, struct item **last);
+typedef struct {
+    int lenght, selected;
+    _menu menu;
+} Menu;

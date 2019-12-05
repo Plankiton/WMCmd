@@ -18,7 +18,6 @@
 
 #include "drw.h"
 #include "util.h"
-#include "menu.c"
 
 enum { SchemeNorm, SchemeSel, SchemeOut, SchemeLast }; /* color schemes */
 

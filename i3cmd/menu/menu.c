@@ -1,13 +1,21 @@
+#include <stdlib.h>
+#include "menu.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "menu.h"
 
-static void appenditem(struct item *item, struct item **list, struct item **last){
-    if (*last)
-        (*last)->right = item;
-    else
-        *list = item;
+Menu createMenu(int lenght){
+    Menu menu;
+    menu.lenght = 3;
+    menu.selected = 0;
 
-    item->left = *last;
-    item->right = NULL;
-    *last = item;
+    return menu;
 }
 
+int main(int argc, char *argv[])
+{
+    Menu j = createMenu(3);
+    printf("%i", j.lenght);
+
+    return 0;
+}
