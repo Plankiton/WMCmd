@@ -2,7 +2,10 @@ typedef struct __item {
     char * value, * output;
 } Item;
 
-typedef union __menu {
+typedef struct __menu {
+    char * title;
     Item * items;
-    union __menu * submenus;
+    struct __menu * submenus;
 } Menu;
+
+#define is_null(item) (item.value == NULL && item.output == NULL)
