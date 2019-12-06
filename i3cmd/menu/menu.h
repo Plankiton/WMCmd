@@ -4,12 +4,7 @@ typedef struct __item {
 
 typedef union __menu {
     Item * items;
-    union __menu * submenu;
-} _menu;
-
-typedef struct {
-    int lenght, selected;
-    _menu menu;
+    union __menu * submenus;
 } Menu;
 
 typedef struct {
