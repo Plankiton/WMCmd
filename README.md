@@ -1,6 +1,6 @@
-# I3Cmd - I3 Command Mode
+# WMCmd - Window Manager Command Mode
 
-A command mode like a vim for management of windows on [i3wm](http://i3wm.org) or [i3-gaps](http://github.com/AirBlader/i3).
+A command mode like a vim for management of windows on tiling window managers like [i3wm](http://i3wm.org), or [i3-gaps](http://github.com/AirBlader/i3), or [dwm](http://dwm.suckless.org/), or [BlackLight](http://robocopgay.github.io/#BlackLightWM).
 
 is in progress...
 
